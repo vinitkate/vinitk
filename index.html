@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vinit | Counting and Sampling Complexity of Total Matchings</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <title>Vinit | Portfolio & Research</title>
+  <link rel="stylesheet" href="style.css?v=projects">
 </head>
 <body>
+]
+  <!-- Ambient glow backdrop -->
+  <div class="glow-orb-1" aria-hidden="true"></div>
+  <div class="glow-orb-2" aria-hidden="true"></div>
 
-  <!-- Full-document scrollable canvas -->
-  <canvas id="binaryCanvas"></canvas>
+  <!-- Binary digits backdrop -->
+  <div id="binaryBg" aria-hidden="true"></div>
 
   <main class="content-wrapper">
+    <!-- Intro Section -->
     <header class="intro-section">
-      <h1>Welcome</h1>
-      <p>This is my personal webpage hosted on GitHub Pages.</p>
-      <div class="badge">vinitk.github.io</div>
+      <h1>Hello!!!</h1>
+      <p>This is my personal webpage of Vinit</p>
+      <!-- <div class="badge"></div> -->
+       <p>I am completed MSc from UoE</p>
     </header>
 
     <hr class="divider">
@@ -25,63 +31,86 @@
       <h2>Research & Thesis</h2>
       <h3 class="thesis-title">Counting and Sampling Complexity of Total Matchings</h3>
       
+      <!-- Lighter, italicized topics list -->
+      <p class="project-topics">
+        Topics: Graph Theory, Approximate Counting, Markov Chain Monte Carlo, Hardcore Model, Computational Complexity
+      </p>
+      
       <p class="thesis-desc">
         The computational complexities of counting independent sets and matchings in graphs have been extensively studied in both exact and approximate regimes; however, the problem of counting total matchings—a structure uniting constraints of both independent set and matching—remains largely unexplored. In this dissertation, we establish the hardness of exact counting for #TOTAL MATCHINGS in general graphs. We then investigate approximate counting in bounded-degree graphs using moment analysis and thermodynamic methods inspired by the study of the hardcore model. Based on analysis introduced by Sly, Weitz, Mossel, and Wormald, we derive the first moment rate function, the corresponding stationary point equations, and a local stability criterion for the symmetric solution. Numerical analysis indicates that the structure of the stationary point equations changes as the density of matching edges varies, suggesting a phase transition phenomenon. We also discuss the difficulties involved in converting this structural analysis into a rigorous approximation hardness reduction.
       </p>
 
-      <!-- Action buttons: View in browser and direct Download -->
       <div class="action-links">
         <a href="Counting_and_Sampling_Complexity_of_Total_Matchings.pdf" target="_blank" rel="noopener noreferrer" class="thesis-link">
-          Read Paper &rarr;
+          Read &rarr;
         </a>
         <a href="Counting_and_Sampling_Complexity_of_Total_Matchings.pdf" download="Counting_Cxty_TMs.pdf" class="thesis-link secondary">
           Download PDF
         </a>
       </div>
     </section>
+
+    <hr class="divider">
+
+    <!-- Academic Projects Section -->
+    <section class="projects-section">
+      <h2>Academic Projects</h2>
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3 class="project-name">2D Sandpile</h3>
+            <span class="project-year">Fall - 2025</span>
+          </div>
+          <p class="project-topics">
+            MPI, C, Weak and Strong Scaling
+          </p>
+          <p class="project-desc">
+            Brief summary of what you designed, researched, or analyzed. Highlight key architectures, tools used, or experimental outcomes.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/vinitkate/Sandpile" target="_blank" rel="noopener noreferrer" class="project-btn">
+              View Repository &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-header">
+            <h3 class="project-name">Data Mining - Frequent Pattern</h3>
+            <span class="project-year">2023</span>
+          </div>
+          <p class="project-topics">
+            FP Tree, Search Algorithms, C++
+          </p>
+          <p class="project-desc">
+            Brief summary of your theoretical framework or empirical implementation. Describe the problem setup and key algorithmic contributions.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/vinitkate/fptreecpp" target="_blank" rel="noopener noreferrer" class="project-btn">
+              View Code &rarr;
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <script>
-    const canvas = document.getElementById('binaryCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function drawBinaryBackground() {
-      const dpr = window.devicePixelRatio || 1;
-      
-      const width = document.documentElement.scrollWidth || window.innerWidth;
-      const height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      ctx.scale(dpr, dpr);
-
-      // Deep dark grey background
-      ctx.fillStyle = '#121417';
-      ctx.fillRect(0, 0, width, height);
-
-      // High-visibility binary digits
-      const fontSize = 13;
-      const cellWidth = 14;
-      const cellHeight = 16;
-
-      ctx.font = `600 ${fontSize}px "Courier New", Consolas, monospace`;
-      ctx.fillStyle = '#4a5568';
-
-      const cols = Math.ceil(width / cellWidth);
-      const rows = Math.ceil(height / cellHeight);
-
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const char = Math.random() > 0.5 ? '1' : '0';
-          ctx.fillText(char, c * cellWidth, r * cellHeight + fontSize);
-        }
+    function generateBinary() {
+      const bg = document.getElementById('binaryBg');
+      const count = Math.floor((window.innerWidth * window.innerHeight) / 75);
+      let str = '';
+      for (let i = 0; i < count; i++) {
+        str += Math.random() > 0.5 ? '1 ' : '0 ';
       }
+      bg.textContent = str;
     }
 
-    drawBinaryBackground();
-    window.addEventListener('resize', drawBinaryBackground);
+    generateBinary();
+    window.addEventListener('resize', generateBinary);
   </script>
 </body>
 </html>
