@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vinit's Webpage</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 650px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-      color: #333;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to my website!</h1>
-  <p>This page is hosted using GitHub Pages.</p>
+
+  <!-- Decorative 101 sequence background -->
+  <div class="binary-pattern" aria-hidden="true" id="pattern"></div>
+
+  <!-- Content Layer -->
+  <main>
+    <h1>Welcome to my site</h1>
+    <p>This is my personal page hosted on GitHub Pages.</p>
+    <div class="badge">10101010101010101010101</div>
+  </main>
+
+  <script>
+    const patternEl = document.getElementById('pattern');
+    patternEl.textContent = '1 0 1 '.repeat(800);
+  </script>
 </body>
 </html>
