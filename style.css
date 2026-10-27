@@ -28,7 +28,7 @@ body {
   pointer-events: none;
 }
 
-/* Translucent Glass Window */
+/* True Glass Window */
 .content-wrapper {
   position: relative;
   z-index: 10;
@@ -36,18 +36,23 @@ body {
   width: 95%;
   padding: 3.5rem 3rem;
 
-  /* 40% opacity tint so the 1s and 0s are clearly visible right through it */
-  background: rgba(18, 20, 24, 0.45);
+  /* Translucent white sheen instead of dark gray tint */
+  background: rgba(255, 255, 255, 0.05);
 
-  /* Subtle glass border with a bright top edge reflection */
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Dual frosted glass filter */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Glass rim highlighting */
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
 
-  /* Inner rim light + soft ambient shadow */
+  /* Ambient depth + inner specular reflection */
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.6),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .intro-section {
@@ -61,7 +66,6 @@ body {
   margin-bottom: 0.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  /* Shadow ensures high contrast over the visible binary digits */
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
@@ -76,7 +80,7 @@ body {
   display: inline-block;
   margin-top: 1.25rem;
   padding: 0.4rem 1rem;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
@@ -93,7 +97,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.25),
     transparent
   );
   margin: 2.5rem 0;
@@ -131,18 +135,28 @@ body {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
 }
 
-/* Link Button */
+/* Action Links Container */
+.action-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Glass Buttons */
 .thesis-link {
   display: inline-block;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.12);
   padding: 0.75rem 1.4rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: all 0.2s ease;
 }
 
@@ -151,4 +165,16 @@ body {
   color: #0f172a;
   border-color: #ffffff;
   transform: translateY(-2px);
+}
+
+.thesis-link.secondary {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+}
+
+.thesis-link.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
 }
