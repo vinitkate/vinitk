@@ -8,10 +8,10 @@
 </head>
 <body>
 
-  <!-- Fullscreen background grid of 0s and 1s -->
+  <!-- Densely packed background of 1s and 0s -->
   <div class="binary-bg" aria-hidden="true" id="binaryBg"></div>
 
-  <!-- Main Content floating above the background -->
+  <!-- Content card layered cleanly on top -->
   <main class="content-card">
     <h1>Welcome</h1>
     <p>This is my personal webpage hosted on GitHub Pages.</p>
@@ -19,10 +19,10 @@
   </main>
 
   <script>
-    // Fills the screen with light grey binary 1s and 0s
     function generateBinaryPattern() {
       const bg = document.getElementById('binaryBg');
-      const charCount = Math.floor((window.innerWidth * window.innerHeight) / 120);
+      // Higher density multiplier to tightly pack the viewport
+      const charCount = Math.floor((window.innerWidth * window.innerHeight) / 38);
       let binaryStr = '';
       for (let i = 0; i < charCount; i++) {
         binaryStr += Math.random() > 0.5 ? '1 ' : '0 ';
