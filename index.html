@@ -8,14 +8,31 @@
 </head>
 <body>
 
-  <!-- Fullscreen true background canvas -->
+  <!-- Full-document scrollable canvas -->
   <canvas id="binaryCanvas"></canvas>
 
-  <!-- Content floating directly over the binary backdrop -->
   <main class="content-wrapper">
-    <h1>Welcome</h1>
-    <p>This is my personal webpage hosted on GitHub Pages.</p>
-    <div class="badge">vinitk.github.io</div>
+    <header class="intro-section">
+      <h1>Welcome</h1>
+      <p>This is my personal webpage hosted on GitHub Pages.</p>
+      <div class="badge">vinitk.github.io</div>
+    </header>
+
+    <hr class="divider">
+
+    <!-- Thesis Section -->
+    <section class="thesis-section">
+      <h2>MSc Dissertation</h2>
+      <h3 class="thesis-title">Counting Complexity of Total Matchings</h3>
+      
+      <p class="thesis-desc">
+        The computational complexities of counting independent sets and matchings in graphs have been extensively studied in both exact and approximate regimes; however, the problem of counting total matchings; a structure uniting constraints of both independent set and matching remains largely unexplored. In this dissertation, we establish the hardness of exact counting for \#TOTAL MATCHINGS in general graphs. We then investigate approximate counting in bounded-degree graphs using moment analysis and thermodynamic methods inspired by the study of the hardcore model. Based on analysis introduced by Sly, Weitz, Mossel and Wormald we derive the first moment rate function, the corresponding stationary point equations, and a local stability criterion for the symmetric solution. Numerical analysis indicates that the structure of the stationary point equations changes as the density of matching edges varies, suggesting a phase transition phenomenon. We also discuss the difficulties involved in converting this structural analysis into a rigorous approximation hardness reduction.
+      </p>
+
+      <a href="#" class="thesis-link" target="_blank" rel="noopener noreferrer">
+        Read Thesis Paper &rarr;
+      </a>
+    </section>
   </main>
 
   <script>
@@ -23,10 +40,10 @@
     const ctx = canvas.getContext('2d');
 
     function drawBinaryBackground() {
-      // Set canvas to high-DPI full resolution
       const dpr = window.devicePixelRatio || 1;
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      
+      const width = document.documentElement.scrollWidth || window.innerWidth;
+      const height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
 
       canvas.width = width * dpr;
       canvas.height = height * dpr;
@@ -34,17 +51,17 @@
       canvas.style.height = height + 'px';
       ctx.scale(dpr, dpr);
 
-      // Clean white background
-      ctx.fillStyle = '#ffffff';
+      // Dark grey background
+      ctx.fillStyle = '#1e2124';
       ctx.fillRect(0, 0, width, height);
 
-      // Dense 1 and 0 grid styling
+      // Binary digits in lighter grey for contrast
       const fontSize = 13;
-      const cellWidth = 14;   // Horizontal density
-      const cellHeight = 16;  // Vertical density
+      const cellWidth = 14;
+      const cellHeight = 16;
 
       ctx.font = `600 ${fontSize}px "Courier New", Consolas, monospace`;
-      ctx.fillStyle = '#6b7280'; // Solid, crisp darker grey
+      ctx.fillStyle = '#4e555d'; // Medium-light contrast grey
 
       const cols = Math.ceil(width / cellWidth);
       const rows = Math.ceil(height / cellHeight);
