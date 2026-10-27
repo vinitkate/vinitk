@@ -8,19 +8,30 @@
 </head>
 <body>
 
-  <!-- Decorative 101 sequence background -->
-  <div class="binary-pattern" aria-hidden="true" id="pattern"></div>
+  <!-- Fullscreen background grid of 0s and 1s -->
+  <div class="binary-bg" aria-hidden="true" id="binaryBg"></div>
 
-  <!-- Content Layer -->
-  <main>
-    <h1>Welcome to my site</h1>
-    <p>This is my personal page hosted on GitHub Pages.</p>
-    <div class="badge">10101010101010101010101</div>
+  <!-- Main Content floating above the background -->
+  <main class="content-card">
+    <h1>Welcome</h1>
+    <p>This is my personal webpage hosted on GitHub Pages.</p>
+    <div class="badge">vinitk.github.io</div>
   </main>
 
   <script>
-    const patternEl = document.getElementById('pattern');
-    patternEl.textContent = '1 0 1 '.repeat(800);
+    // Fills the screen with light grey binary 1s and 0s
+    function generateBinaryPattern() {
+      const bg = document.getElementById('binaryBg');
+      const charCount = Math.floor((window.innerWidth * window.innerHeight) / 120);
+      let binaryStr = '';
+      for (let i = 0; i < charCount; i++) {
+        binaryStr += Math.random() > 0.5 ? '1 ' : '0 ';
+      }
+      bg.textContent = binaryStr;
+    }
+
+    generateBinaryPattern();
+    window.addEventListener('resize', generateBinaryPattern);
   </script>
 </body>
 </html>
