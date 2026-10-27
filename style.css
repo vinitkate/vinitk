@@ -5,65 +5,128 @@
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #1e2124; /* Dark grey */
+  color: #f3f4f6;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  overflow: hidden;
   position: relative;
+  overflow-x: hidden;
+  padding: 3rem 1rem;
 }
 
-/* Canvas is locked to the very back layer */
+/* Background canvas scrolls with the page */
 #binaryCanvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;          /* Behind everything */
-  pointer-events: none; /* Cannot be clicked or highlighted */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* Floating content container with subtle frosted glass effect */
+/* Dark frosted glass content card */
 .content-wrapper {
   position: relative;
   z-index: 10;
-  max-width: 540px;
-  width: 88%;
-  padding: 2.5rem 2rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(107, 114, 128, 0.25);
+  max-width: 620px;
+  width: 100%;
+  padding: 2.75rem 2.25rem;
+  background: rgba(30, 33, 36, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.content-wrapper h1 {
-  font-size: 2.25rem;
-  color: #111827;
-  margin-bottom: 0.75rem;
+.intro-section {
+  text-align: center;
+}
+
+.intro-section h1 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.content-wrapper p {
+.intro-section p {
   font-size: 1.05rem;
-  color: #374151;
+  color: #9ca3af;
   line-height: 1.6;
 }
 
 .badge {
   display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.4rem 0.9rem;
-  background-color: #111827;
-  color: #ffffff;
+  margin-top: 1rem;
+  padding: 0.35rem 0.85rem;
+  background-color: #2b2f35;
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   font-family: monospace;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.05em;
+}
+
+/* Divider line */
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+  margin: 2rem 0;
+}
+
+/* Thesis Section */
+.thesis-section {
+  text-align: left;
+}
+
+.thesis-section h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.thesis-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.thesis-desc {
+  font-size: 0.97rem;
+  color: #d1d5db;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+/* Link Button */
+.thesis-link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #2e3338;
+  padding: 0.65rem 1.15rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+}
+
+.thesis-link:hover {
+  background-color: #ffffff;
+  color: #111827;
+  border-color: #ffffff;
 }
